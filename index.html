@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Expedition Exclamations</title>
+<style>
+    /* CSS styles */
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5; /* Light gray background */
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.container {
+    max-width: 600px;
+    margin: 80px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 12px; /* Increased border radius */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Increased box shadow */
+    text-align: center;
+}
+
+h1, h2 {
+    color: #3f51b5; /* Updated heading color */
+}
+
+form {
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+select {
+    width: 80%;
+    padding: 10px;
+    border: 2px solid #ccc; /* Increased border size */
+    border-radius: 8px; /* Increased border radius */
+    margin-bottom: 10px;
+}
+
+button[type="submit"],
+button {
+    padding: 10px 20px;
+    background-color: #f44336; /* Red background color */
+    color: #fff;
+    border: none;
+    border-radius: 8px; /* Increased border radius */
+    cursor: pointer;
+}
+
+button[type="submit"]:hover,
+button:hover {
+    background-color: #d32f2f; /* Darker red hover color */
+}
+
+#madLibsSentence {
+    font-style: italic;
+}
+
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f5f5f5; /* Light gray background */
+    padding: 20px;
+    border-radius: 12px; /* Increased border radius */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Increased box shadow */
+    z-index: 999;
+}
+
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>Expedition Exclamations</h1>
+    <form id="madLibsForm">
+        <div class="form-group">
+            <label for="noun">Name:</label>
+            <input type="text" id="noun" name="noun" required>
+        </div>
+        <div class="form-group">
+            <label for="adjective">Adjective:</label>
+            <input type="text" id="adjective" name="adjective" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="verb">Action:</label>
+            <input type="text" id="verb" name="verb" required>
+        </div>
+        <div class="form-group">
+            <label for="place">Place:</label>
+            <input type="text" id="place" name="place" required>
+        </div>
+        <div class="form-group">
+            <label for="emotion">Feeling:</label>
+            <input type="text" id="emotion" name="emotion" required>
+        </div>
+        <button type="submit">Generate Story</button>
+    </form>
+</div>
+
+<div id="popup" class="popup" style="display: none;">
+    <h2>Your Adventure Story</h2>
+    <p id="madLibsSentence"></p>
+    <button onclick="closePopup()">GO Back to Form</button>
+</div>
+
+<script>
+    function generateSentence(event) {
+    event.preventDefault();
+
+    const noun = document.getElementById("noun").value;
+    const adjective = document.getElementById("adjective").value;
+    const verb = document.getElementById("verb").value;
+    const place = document.getElementById("place").value;
+    const emotion = document.getElementById("emotion").value;
+
+    const sentence = `${noun}, a ${adjective} explorer, embarked on a quest to ${verb} deep in the heart of ${place}, filled with ${emotion}.`;
+
+
+    document.getElementById("madLibsSentence").innerText = sentence;
+    document.getElementById("popup").style.display = "block";
+}
+
+function closePopup() {
+    document.getElementById("popup").style.display = "none";
+    document.getElementById("madLibsForm").reset();
+}
+
+document.getElementById("madLibsForm").addEventListener("submit", generateSentence);
+
+</script>
+<footer>
+    <p>Last updated: 
+        <span id="lastModified"></span>
+    </p>
+</footer>
+<footer>
+    <h2>Addendum</h2>
+    <P> This HTML document is designed to offer an interactive experience called "Adventure Mad Libs". Users engage by providing inputs such as a name, adjective, verb, place, and emotion through a form. After submission, a JavaScript function gathers these inputs and constructs a sentence template. This template incorporates the user-provided words to generate a unique adventure story. Subsequently, the JavaScript function displays this story in a popup, overlaying the form. Users have the option to close the popup and reset the form for another round of play. The CSS styling ensures the page's visual appeal and responsiveness, featuring a light blue background with centered content. Additionally, a footer dynamically shows the document's last modified date using JavaScript, helping users track when the code was last updated. In summary, the HTML, CSS, and JavaScript collaborate to offer an immersive and dynamic storytelling experience for users.</p>
+        <span id="lastModified"></span>
+    </p>
+</footer>
+<script type="text/javascript">
+    var x = document.lastModified;
+    document.getElementById('lastModified').textContent = x;
+</script>
+</body>
+</html>
